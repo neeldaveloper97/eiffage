@@ -2,7 +2,23 @@ import React from 'react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
 
-const Banner = () => {
+interface BannerProps {
+  maintitle: string;
+  title: string;
+  date: string;
+  description: string;
+  buttonText: string;
+  imageUrl: string;
+}
+
+const Banner: React.FC<BannerProps> = ({
+  maintitle,
+  title,
+  date,
+  description,
+  buttonText,
+  imageUrl
+}) => {
   return (
     <section className='pb-6 pt-9'>
       <div className='container'>
@@ -10,36 +26,33 @@ const Banner = () => {
           <div className='p-16 xl:pr-0'>
             <div className='w-full max-w-full xl:max-w-[512px]'>
               <p className='text-base font-semibold text-neutral-50 opacity-[0.8]'>
-                Mot du CEO
+                {maintitle}
               </p>
               <h1 className='pt-5 text-4xl font-bold leading-10 text-neutral-50'>
-                Solidarity Week
+                {title}
               </h1>
               <p className='pt-2.5 text-2xl font-bold leading-none text-neutral-50'>
-                Februari - Février 10-14-2025
+                {date}
               </p>
               <p className='pt-9 text-lg font-light leading-7 text-neutral-50 opacity-[0.8]'>
-                Chez Eiffage, nous croyons que la solidarité est un levier
-                essentiel pour construire un monde plus durable et inclusif.
-                C’est pourquoi nous sommes fiers de soutenir les Solidarity
-                Weeks, une initiative qui mobilise nos collaborateurs à travers
-                des actions concrètes au service de la société.
+                {description}
               </p>
               <Button
                 className='mt-6 bg-white shadow-none'
                 variant={'secondary'}
               >
-                En savoir plus
+                {buttonText}
               </Button>
             </div>
           </div>
           <div className='w-full max-w-full overflow-hidden rounded-tl-lg xl:max-w-[612px]'>
             <Image
-              src={'/images/bannerImg.png'}
+              src={imageUrl}
               alt='People Hugging'
               className='h-full min-h-[436px] w-full object-cover'
               width={612}
               height={436}
+              priority
             />
           </div>
         </div>
